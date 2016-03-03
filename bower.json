@@ -9,9 +9,9 @@
   "keywords": [
     "firebase"
   ],
-  "license": "private",
-  "homepage": "",
-  "private": true,
+  "license": "MIT",
+  "homepage": "https://github.com/nowzoo/nowzoo.firebase.utils",
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
