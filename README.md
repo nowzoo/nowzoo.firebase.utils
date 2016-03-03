@@ -25,7 +25,7 @@ angular.module('my.app')
     });
 ```    
 
-## firebaseUtilities
+## API
 
 ```
 //Set the application reference with a url...
