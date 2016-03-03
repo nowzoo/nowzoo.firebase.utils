@@ -1,6 +1,6 @@
 #  NowZoo Firebase Utilities
 
-This module exposes several utilities for using Firebase with angularfire.
+Several utilities for using Firebase with Angular and angularfire.
 
 Usage:
 
