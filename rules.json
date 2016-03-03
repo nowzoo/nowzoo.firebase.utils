@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "user_profiles": {
+      ".read": "true"
+    },
+    "user_data": {
+      "$userId": {
+        ".validate": "newData.hasChildren(['created_at', 'updated_at'])",
+        "created_at": {
+          ".validate": "newData.isNumber()",
+          ".write": "auth != null && auth.uid == $userId && newData.val() == now && data.val() == null"
+        },
+        "updated_at": {
+          ".validate": "newData.isNumber()",
+          ".write": "auth != null && auth.uid == $userId && newData.val() == now"
+        },
+        "last_signed_in_at": {
+          ".validate": "newData.isNumber() || newData.val() == null",
+          ".write": "auth != null && auth.uid == $userId && newData.val() == now"
+        },
+        "$other": {
+          ".validate": "false"
+        },
+        ".read": "auth != null && auth.uid == $userId"
+      }
+    }
+  }
+}
