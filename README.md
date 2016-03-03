@@ -2,23 +2,18 @@
 
 Several utilities for using Firebase with Angular and <a  href="https://github.com/firebase/angularfire">angularfire</a>.
 
-Usage:
+## Usage
 
 ```
 //declare the dependency...
 angular.module('my.app', ['nowzoo.firebase.utils']);
-```
 
-```
 //set the application reference with a URL...
 angular.module('my.app')
     .run(function(firebaseUtilities){
         firebaseUtilities.setApplicationReference('https://<YOUR-FIREBASE>.firebaseio.com/')
     });
-```
 
-
-```
 angular.module('my.app')
     .controller('MyController', function($scope, firebaseUtilities){
         $scope.options = firebaseUtilities.getObject('options');
