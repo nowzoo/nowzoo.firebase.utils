@@ -57,18 +57,18 @@ describe('firebaseUtilitesService', function(){
         it('should exist and be a function', function() {
             expect(angular.isFunction(firebaseUtilities.childReference)).toEqual(true);
         });
-        it('should throw if not passed an array', function() {
-            var test = function(){
-                var ref = firebaseUtilities.childReference();
-            };
-            expect(test).toThrow()
-        });
+
         it('should return a firebase reference if passed an array of length 1', function() {
             var ref = firebaseUtilities.childReference(['options']);
             expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options')
         });
         it('should return a firebase reference if passed an array of length 3', function() {
             var ref = firebaseUtilities.childReference(['options', 'foo', 'bar']);
+            expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options/foo/bar')
+        });
+
+        it('should return a firebase reference if passed args of length 3', function() {
+            var ref = firebaseUtilities.childReference('options', 'foo', 'bar');
             expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options/foo/bar')
         });
 

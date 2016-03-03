@@ -4,7 +4,7 @@
     "Christopher Carson <chris@nowzoo.com>"
   ],
   "description": "Provides a few utilities for angularfire",
-  "main": "index.js",
+  "main": "src/module.js",
   "moduleType": [],
   "keywords": [
     "firebase"
