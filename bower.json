@@ -7,7 +7,7 @@
   "main": "src/module.js",
   "moduleType": [],
   "keywords": [
-    "firebase"
+    "firebase", "angular", "angularfire"
   ],
   "license": "MIT",
   "homepage": "https://github.com/nowzoo/nowzoo.firebase.utils",
