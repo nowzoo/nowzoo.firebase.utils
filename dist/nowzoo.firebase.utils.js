@@ -40,13 +40,16 @@ angular.module('nowzoo.firebase.utils')
          */
         var childReference = function(paths){
             var child = getApplicationReference();
-            if (! angular.isArray(paths)){
-                throw(new Error('use an array, you moron'));
-            }
-
-            angular.forEach(paths, function(path){
-                var s = path.toString();
-                child = child.child(s);
+            angular.forEach(arguments, function(val){
+                if (angular.isArray(val)){
+                    angular.forEach(val, function(str){
+                        var s = str.toString();
+                        child = child.child(s);
+                    });
+                } else {
+                    var s = val.toString();
+                    child = child.child(s);
+                }
             });
             return child;
         };

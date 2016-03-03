@@ -24,3 +24,32 @@ angular.module('my.app')
         $scope.options = firebaseUtilities.getObject('options');
     });
 ```    
+
+## firebaseUtilities
+
+```
+//Set the application reference with a url...
+firebaseUtilities.setApplicationReference(url);
+
+//Get the application reference...
+firebaseUtilities.getApplicationReference ();
+
+//Get a $firebaseAuth object...
+firebaseUtilities.getApplicationAuth();
+
+//Get a child firebase reference from the arguments
+firebaseUtilities.childReference(path1, ...);
+
+//Get a $firebaseObject from the arguments
+firebaseUtilities.getObject(path1, ...);
+
+//Get a $firebaseObject from a firebase ref
+firebaseUtilities.getRefObject(ref);
+
+//Get a $firebaseArray from the args
+firebaseUtilities.getArray(path1, ...);
+
+//Get a $firebaseArray from a firebase ref...
+firebaseUtilities.getRefArray(ref);
+
+```
