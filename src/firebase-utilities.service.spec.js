@@ -17,8 +17,8 @@ describe('firebaseUtilitesService', function(){
         $rootScope = _$rootScope_;
         $window = _$window_;
         firebaseUtilities = _firebaseUtilities_;
-        firebaseUtilities.setApplicationReference('https://localhost.firebaseio.test');
-
+        appRef = firebaseUtilities.setApplicationReference('https://localhost.firebaseio.test');
+        appRef.autoFlush();
     }));
 
     describe('setApplicationReference()', function(){
@@ -79,12 +79,7 @@ describe('firebaseUtilitesService', function(){
         it('should exist and be a function', function() {
             expect(angular.isFunction(firebaseUtilities.getObject)).toEqual(true);
         });
-        it('should throw if not passed an array', function() {
-            var test = function(){
-                var o = firebaseUtilities.getObject();
-            };
-            expect(test).toThrow();
-        });
+
 
         it('should return an object with a $loaded property that returns a promise', function() {
 
@@ -92,18 +87,20 @@ describe('firebaseUtilitesService', function(){
             expect(angular.isFunction(object.$loaded)).toEqual(true);
             expect(angular.isFunction(object.$loaded().then)).toEqual(true);
         });
-        it('object.$loaded should resolve if the data is set', function(){
-            var result;
-            var ref = firebaseUtilities.childReference(['options']);
-            var object = firebaseUtilities.getObject(['options']);
+        it('should populate the object if the data is set', function(){
+            var ref = firebaseUtilities.childReference('options');
+            var object = firebaseUtilities.getObject('options', 'foo');
             ref.set({foo: 'bar'});
-            ref.flush();
-            object.$loaded().then(function(r){
-                result = r;
-            });
             $rootScope.$digest();
-            expect(angular.isObject(result)).toEqual(true);
-            expect(result.foo).toEqual('bar');
+            expect(object.$value).toEqual('bar');
+        });
+
+        it('should populate the object if the data is set and we pass an array', function(){
+            var ref = firebaseUtilities.childReference('options');
+            var object = firebaseUtilities.getObject(['options', 'foo']);
+            ref.set({foo: 'bar'});
+            $rootScope.$digest();
+            expect(object.$value).toEqual('bar');
         });
 
         it('object._error should be set if there is a security error', function(){
@@ -111,7 +108,7 @@ describe('firebaseUtilitesService', function(){
             var ref = firebaseUtilities.childReference(['options']);
             var object = firebaseUtilities.getObject(['options']);
             ref.set({foo: 'bar'});
-            ref.flush();
+
 
             ref.forceCancel(new Error('security error'));
             object.$loaded().then(function(r){
@@ -123,20 +120,7 @@ describe('firebaseUtilitesService', function(){
             expect(angular.isObject(result)).toEqual(true);
             expect(result.__securityError).toEqual(true);
         });
-        it('object.$loaded should not resolve if the data is not set', function(){
-            var result;
-            var object = firebaseUtilities.getObject(['options']);
-            object.$loaded()
-                .then(function(r){
-                    result = r;
-                })
-                .catch(function(err){
-                    //console.log(err);
-                });
-            $rootScope.$digest();
-            expect(angular.isObject(result)).not.toEqual(true);
-            expect(result).toEqual(undefined);
-        });
+
 
 
 
@@ -168,42 +152,21 @@ describe('firebaseUtilitesService', function(){
         it('should exist and be a function', function() {
             expect(angular.isFunction(firebaseUtilities.getArray)).toEqual(true);
         });
-        it('should throw if not passed an array', function() {
-            var test = function(){
-                var o = firebaseUtilities.getArray();
-            };
-            expect(test).toThrow();
-        });
+
         it('should return an object with a $loaded property that returns a promise', function() {
 
             var object = firebaseUtilities.getArray(['list']);
             expect(angular.isFunction(object.$loaded)).toEqual(true);
             expect(angular.isFunction(object.$loaded().then)).toEqual(true);
         });
-        it('object.$loaded should resolve if the data is set', function(){
-            var result;
+        it('should populated if the data is set', function(){
             var ref = firebaseUtilities.childReference(['list']);
             var object = firebaseUtilities.getArray(['list']);
             ref.set({foo: 'bar', baz: 'boo'});
-            ref.flush();
-            object.$loaded().then(function(r){
-                result = r;
-            });
             $rootScope.$digest();
-            expect(angular.isObject(result)).toEqual(true);
             expect(object.$getRecord('foo').$value).toEqual('bar');
         });
-        it('object.$loaded should not resolve if the data is not set', function(){
-            var result;
-            var object = firebaseUtilities.getArray(['list']);
 
-            object.$loaded().then(function(r){
-                result = r;
-            });
-            $rootScope.$digest();
-            expect(angular.isObject(result)).not.toEqual(true);
-            expect(result).toEqual(undefined);
-        });
 
 
     });

@@ -37,8 +37,10 @@ angular.module('nowzoo.firebase.utils')
          * @returns {{}}
          */
         var childReference = function(paths){
+            var args = Array.prototype.slice.call(arguments);
+
             var child = getApplicationReference();
-            angular.forEach(arguments, function(val){
+            angular.forEach(args, function(val){
                 if (angular.isArray(val)){
                     angular.forEach(val, function(str){
                         var s = str.toString();
@@ -58,7 +60,7 @@ angular.module('nowzoo.firebase.utils')
          * @returns {Function}
          */
         var getObject = function(paths){
-            var ref = childReference(paths);
+            var ref = childReference.apply(null, arguments);
             /*jshint newcap: false */
             return new ObjectFactory(ref);
         };
@@ -77,7 +79,7 @@ angular.module('nowzoo.firebase.utils')
          * @returns {Function}
          */
         var getArray = function(paths){
-            var ref = childReference(paths);
+            var ref = childReference.apply(null, arguments);
             /*jshint newcap: false */
             return new ArrayFactory(ref);
         };
