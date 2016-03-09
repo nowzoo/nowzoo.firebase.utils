@@ -2,7 +2,8 @@
 
 Several utilities for using Firebase with Angular and <a  href="https://github.com/firebase/angularfire">angularfire</a>.
 
-- [Usage](#markdown-header-usage)
+- [Usage](#user-content-usage)
+- [API](#user-content-api)
 
 ## Usage
 
