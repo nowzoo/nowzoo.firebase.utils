@@ -4,14 +4,37 @@ An [Angular](https://angularjs.org) module with
  utilities for working with [Firebase](https://www.firebase.com/)  and
  [angularfire](https://github.com/firebase/angularfire).
 
+
+
+- [Installation](#user-content-installation)
 - [Usage](#user-content-usage)
 - [API](#user-content-api)
 
+
+
+## Installation
+```
+bower install nowzoo-firebase-utils --save
+```
+
 ## Usage
+
+app.html:
+
+```
+//dependencies...
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+
+//nowzoo-firebase-utils
+<script src="bower_components/nowzoo-firebase-utils/dist/nowzoo.firebase.utils.js"></script>
+
+```
 
 ```
 //declare the dependency...
-angular.module('my.app', ['nowzoo.firebase.utils']);
+angular.module('my.app', ['firebase', 'nowzoo.firebase.utils']);
 
 //set the application reference with a URL...
 angular.module('my.app')
