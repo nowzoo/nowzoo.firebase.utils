@@ -1,6 +1,8 @@
 #  NowZoo Firebase Utilities
 
-Several utilities for using Firebase with Angular and <a  href="https://github.com/firebase/angularfire">angularfire</a>.
+An [Angular](https://angularjs.org) module with
+ utilities for working with [Firebase](https://www.firebase.com/)  and
+ [angularfire](https://github.com/firebase/angularfire).
 
 - [Usage](#user-content-usage)
 - [API](#user-content-api)
