@@ -19,7 +19,7 @@ bower install nowzoo-firebase-utils --save
 
 ## Usage
 
-app.html:
+In your HTML...:
 
 ```
 //dependencies...
@@ -27,10 +27,12 @@ app.html:
 <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
 
-//nowzoo-firebase-utils
+//nowzoo-firebase-utils...
 <script src="bower_components/nowzoo-firebase-utils/dist/nowzoo.firebase.utils.js"></script>
 
 ```
+
+In your app...
 
 ```
 //declare the dependency...
