@@ -2,6 +2,7 @@ angular.module('nowzoo.firebase.utils', ['firebase']);
 
 angular.module('nowzoo.firebase.utils')
     .factory('firebaseUtilities', ["$window", "$firebaseAuth", "$firebaseObject", "$firebaseArray", function($window, $firebaseAuth, $firebaseObject, $firebaseArray){
+        'use strict';
         var _appReference = null;
         var _appAuth = null;
 
@@ -38,7 +39,7 @@ angular.module('nowzoo.firebase.utils')
          * @param paths
          * @returns {{}}
          */
-        var childReference = function(paths){
+        var childReference = function(){
             var args = Array.prototype.slice.call(arguments);
 
             var child = getApplicationReference();
@@ -61,7 +62,7 @@ angular.module('nowzoo.firebase.utils')
          * @param paths
          * @returns {Function}
          */
-        var getObject = function(paths){
+        var getObject = function(){
             var ref = childReference.apply(null, arguments);
             /*jshint newcap: false */
             return new ObjectFactory(ref);
@@ -80,7 +81,7 @@ angular.module('nowzoo.firebase.utils')
          * @param paths
          * @returns {Function}
          */
-        var getArray = function(paths){
+        var getArray = function(){
             var ref = childReference.apply(null, arguments);
             /*jshint newcap: false */
             return new ArrayFactory(ref);
