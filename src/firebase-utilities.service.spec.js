@@ -1,12 +1,12 @@
 describe('firebaseUtilitesService', function(){
-
+    'use strict';
     var $rootScope;
     var $window;
     var firebaseUtilities;
-    var resolved;
-    var rejected;
-    var resolveFunc;
-    var rejectFunc;
+    // var resolved;
+    // var rejected;
+    // var resolveFunc;
+    // var rejectFunc;
     var appRef;
 
 
@@ -60,16 +60,16 @@ describe('firebaseUtilitesService', function(){
 
         it('should return a firebase reference if passed an array of length 1', function() {
             var ref = firebaseUtilities.childReference(['options']);
-            expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options')
+            expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options');
         });
         it('should return a firebase reference if passed an array of length 3', function() {
             var ref = firebaseUtilities.childReference(['options', 'foo', 'bar']);
-            expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options/foo/bar')
+            expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options/foo/bar');
         });
 
         it('should return a firebase reference if passed args of length 3', function() {
             var ref = firebaseUtilities.childReference('options', 'foo', 'bar');
-            expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options/foo/bar')
+            expect(ref.toString()).toEqual('https://localhost.firebaseio.test/options/foo/bar');
         });
 
 
@@ -230,4 +230,3 @@ describe('firebaseUtilitesService', function(){
 
 
 });
-
