@@ -1,3 +1,4 @@
+'use strict';
 var gulp = require('gulp');
 var _ = require('lodash');
 var template = require('gulp-template');
@@ -22,10 +23,7 @@ var templatesGlob = ['./src/**/*.html', '!./src/index.html'];
 
 gulp.task('js', function(){
     var streamqueue = require('streamqueue');
-    var fs = require('fs');
     var plumber = require('gulp-plumber');
-    var template = require('gulp-template');
-    var htmlmin = require('gulp-html-minifier');
     var templateCache = require('gulp-angular-templatecache');
     var concat = require('gulp-concat');
     var ngAnnotate = require('gulp-ng-annotate');
