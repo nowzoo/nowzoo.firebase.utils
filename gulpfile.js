@@ -79,7 +79,7 @@ gulp.task('build', ['js']);
 
 
 
-gulp.task('watch', ['build'], function(){
+gulp.task('default', ['build'], function(){
     var watch = require('gulp-watch');
     watch(jsGlob, function(){
         gulp.start('js');
